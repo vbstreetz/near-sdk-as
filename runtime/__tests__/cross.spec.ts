@@ -1,5 +1,5 @@
 import { Runtime, Account, stateSize } from "..";
-import { throws } from "assert";
+import * as assert from "assert";
 
 let runtime: Runtime;
 let sentences: Account, words: Account, alice: Account;
@@ -70,6 +70,15 @@ describe("cross contract calls", () => {
 
   test("get block_timestanp", () => {
     sentences.call("getBlock_timestamp").result.outcome;
+  });
+
+  test("calling is_valid_account_id", () => {
+    assert.deepEqual(sentences.call("isValidAccountID", {
+      accountId: "near",
+    }).result.outcome.return_data, { Value: 'true' });
+    assert.deepEqual(sentences.call("isValidAccountID", {
+      accountId: "0__0",
+    }).result.outcome.return_data, { Value: 'false' });
   });
 
   test("contract promise batch", () => {

@@ -172,3 +172,7 @@ export function nonPayableFunction(): void {
   notPayable();
   throw new Error("shouldn't see this " + Context.attachedDeposit.toString());
 }
+
+export function isValidAccountID(accountId: string): boolean {
+  return env.is_valid_account_id(accountId);
+}

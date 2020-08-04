@@ -419,4 +419,13 @@ export namespace env {
   export function storage_has_key(key_len: u64, key_ptr: u64): u64 {
     return _storage_has_key(key_len, key_ptr);
   }
+
+  // #############
+  // # Helper methods #
+  // #############
+  //@ts-ignore
+  @inline
+  export function is_valid_account_id(account_id: string): boolean {
+    return _is_valid_account_id(account_id);
+  }
 }

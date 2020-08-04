@@ -315,3 +315,11 @@ declare function _storage_remove(
 @external("env", "storage_has_key")
 @global
 declare function _storage_has_key(key_len: u64, key_ptr: u64): u64;
+
+// ###############
+// # Helper methods #
+// ###############
+//@ts-ignore
+@external("env", "is_valid_account_id")
+@global
+declare function _is_valid_account_id(account_id: string): boolean;
